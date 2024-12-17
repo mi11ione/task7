@@ -12,27 +12,28 @@ struct ContentView: View {
 
     var body: some View {
         ZStack {
-            expandableCard
-            actionButton
+            background
+            title
         }
     }
 
-    private var expandableCard: some View {
-        RoundedRectangle(cornerRadius: isExpanded ? 20 : 15)
-            .fill(Color.blue)
-            .frame(
-                width: isExpanded ? 350 : 100,
-                height: isExpanded ? 450 : 60
-            )
-            .onTapGesture {
-                guard !isExpanded else { return }
-                withAnimation(.spring) { isExpanded.toggle() }
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: isExpanded ? .center : .bottomTrailing)
-            .padding()
+    private var background: some View {
+        Button {
+            withAnimation(.spring) { isExpanded.toggle() }
+        } label: {
+            RoundedRectangle(cornerRadius: isExpanded ? 20 : 15)
+                .fill(Color.blue)
+                .frame(
+                    width: isExpanded ? 350 : 100,
+                    height: isExpanded ? 450 : 60
+                )
+        }
+        .allowsHitTesting(!isExpanded)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: isExpanded ? .center : .bottomTrailing)
+        .padding()
     }
 
-    private var actionButton: some View {
+    private var title: some View {
         Button {
             withAnimation(.spring) { isExpanded.toggle() }
         } label: {
