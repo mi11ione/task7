@@ -11,8 +11,7 @@ struct ContentView: View {
     @State private var isExpanded = false
 
     var body: some View {
-        ZStack {
-            background
+        background.overlay {
             title
         }
     }
