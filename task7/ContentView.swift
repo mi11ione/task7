@@ -20,7 +20,7 @@ struct ContentView: View {
                         .fill(Color.blue)
                         .frame(
                             width: isExpanded ? 350 : 100,
-                            height: isExpanded ? 450 : 65
+                            height: isExpanded ? 450 : 60
                         )
                         .overlay(
                             Group {
